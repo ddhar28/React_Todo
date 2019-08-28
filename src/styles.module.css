@@ -1,0 +1,57 @@
+.txt {
+  color: purple
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 96vh;
+    background-color: beige;
+    padding: 0;
+    margin: 0;
+  }
+
+.sec {
+    display: flex;
+    background-color: transparent;
+    width: 49%;
+    padding: 2px;
+    flex-direction: column;
+  }
+
+  .left {
+    width: 35%;
+	align-content: center;
+  }
+
+  span {
+    margin: 0;
+    padding:0;
+  }
+
+  .title {
+    margin: 20px;
+    margin-left: 0;
+  }
+
+  .taskInput {
+    width: 50%;
+    margin-bottom: 10%;
+  }
+
+  .addBtn {
+    width: 30%;
+  }
+
+  /* @media only screen and (max-width: 600px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #taskInput {
+      flex-direction: row;
+	    justify-content: space-evenly;
+    }
+  }*/
