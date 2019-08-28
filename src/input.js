@@ -1,13 +1,19 @@
 import React from 'react'
-import style from './styles.module.css'
+// import style from './styles.module.css'
 
-function Input () {
+function TaskInput (props) {
   return (
-    <>
-      <input className={style.taskInput} maxLength='50' type='text' />
-      <button className={style.addBtn}>Add</button>
-    </>
+    <section>
+      <input
+        type='text'
+        maxLength='50'
+        placeholder='Enter task title...'
+        value={props.value}
+        onChange={props.onChange} />
+
+      <button onClick={props.onClick} >Add</button>
+    </section>
   )
 }
 
-export default Input
+export default TaskInput
