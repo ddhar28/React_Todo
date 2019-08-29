@@ -15,7 +15,7 @@ class TaskItem extends React.Component {
   render () {
     return (
       <div>
-        <span>this.state.title</span>
+        <span>{this.state.title}</span>
         <button>X</button>
       </div>
     )

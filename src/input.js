@@ -9,7 +9,8 @@ function TaskInput (props) {
         maxLength='50'
         placeholder='Enter task title...'
         value={props.value}
-        onChange={props.onChange} />
+        onChange={props.onChange}
+        onKeyDown={props.onKeyDown} />
 
       <button onClick={props.onClick} >Add</button>
     </section>

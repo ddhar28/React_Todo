@@ -26,17 +26,14 @@ class Container extends React.Component {
       id: 1 + Math.random(),
       title: this.state.newItem
     }
-    console.log('newItem', newItem)
 
     const list = [...this.state.list]
     list.push(newItem)
-    console.log('list', list)
 
     this.setState({
       list,
       newItem: ''
     })
-    console.log('updated state...', this.state)
   }
 
   render () {
@@ -46,7 +43,10 @@ class Container extends React.Component {
         <TaskInput
           value={this.state.newItem}
           onChange={(e) => this.updateInput(e.target.value)}
-          onClick={() => this.addItem()} />
+          onClick={() => this.addItem()}
+          onKeyDown={(e) => {
+            if (e.keyCode === 13) this.addItem()
+          }} />
         <TaskList list={this.state.list} />
       </>
     )
