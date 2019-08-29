@@ -6,41 +6,19 @@ let style = {
   margin: '0'
 }
 
-class TaskItem extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      id: this.props.id,
-      title: this.props.title,
-      isComplete: false
-    }
-  }
-
-  onChangeActiveState () {
-    let isComplete = !this.state.isComplete
-
-    this.setState({
-      isComplete
-    })
-
-    console.log('changed task state to...', this.state.isComplete)
-    this.props.onChangeActiveState(this.state.isComplete, this.state.id)
-  }
-
-  render () {
-    let ActiveState = this.state.isComplete ? 'revoke' : 'complete'
-    return (
-      <div style={style}>
-        <p style={style}>
-          <textarea value={this.state.title} />
-        </p>
-        <textarea />
-        <button onClick={(e) => this.onChangeActiveState(e)} >{ActiveState}</button>
-        <button onClick={() => this.props.onDelete(this.state.id)} >X</button>
-      </div>
-    )
-  }
+function TaskItem (props) {
+  const { id, title, isComplete, note } = props.task
+  let ActiveState = isComplete ? 'revert' : 'complete'
+  return (
+    <div style={style}>
+      <p style={style}>
+        <textarea value={title} onChange={(e) => props.onUpdate(id, 'title', e.target.value)} />
+      </p>
+      <textarea value={note} placeholder='Enter notes...' onChange={(e) => props.onUpdate(id, 'note', e.target.value)} />
+      <button onClick={() => props.onChangeActiveState(id)} >{ActiveState}</button>
+      <button onClick={() => props.onDelete(id)} >X</button>
+    </div>
+  )
 }
 
 export default TaskItem

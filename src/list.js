@@ -8,11 +8,11 @@ function TaskList (props) {
       {props.list.map(item => {
         return (
           <TaskItem
-            title={item.title}
             key={item.id}
-            id={item.id}
+            task={item}
             onDelete={props.onDelete}
-            onChangeActiveState={props.onChangeActiveState} />
+            onChangeActiveState={props.onChangeActiveState}
+            onUpdate={props.onUpdate} />
         )
       })}
     </section>
