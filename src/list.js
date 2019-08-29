@@ -9,7 +9,9 @@ function TaskList (props) {
         return (
           <TaskItem
             title={item.title}
-            key={item.id} />
+            key={item.id}
+            id={item.id}
+            onDelete={props.onDelete} />
         )
       })}
     </section>

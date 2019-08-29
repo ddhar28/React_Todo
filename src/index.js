@@ -18,7 +18,6 @@ class Container extends React.Component {
     this.setState({
       newItem: val
     })
-    console.log('updating...', this.state)
   }
 
   addItem () {
@@ -36,6 +35,13 @@ class Container extends React.Component {
     })
   }
 
+  removeItem = (id) => {
+    const list = this.state.list.filter(item => item.id !== id)
+    this.setState({
+      list
+    })
+  }
+
   render () {
     return (
       <>
@@ -44,10 +50,12 @@ class Container extends React.Component {
           value={this.state.newItem}
           onChange={(e) => this.updateInput(e.target.value)}
           onClick={() => this.addItem()}
-          onKeyDown={(e) => {
+          onEnter={(e) => {
             if (e.keyCode === 13) this.addItem()
           }} />
-        <TaskList list={this.state.list} />
+        <TaskList
+          list={this.state.list}
+          onDelete={this.removeItem} />
       </>
     )
   }
