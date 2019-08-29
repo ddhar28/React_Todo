@@ -23,7 +23,8 @@ class Container extends React.Component {
   addItem () {
     const newItem = {
       id: 1 + Math.random(),
-      title: this.state.newItem
+      title: this.state.newItem,
+      isComplete: false
     }
 
     const list = [...this.state.list]
@@ -35,11 +36,19 @@ class Container extends React.Component {
     })
   }
 
-  removeItem = (id) => {
-    const list = this.state.list.filter(item => item.id !== id)
-    this.setState({
-      list
+  removeItem = (taskId) => {
+    const list = this.state.list.filter(item => item.id !== taskId)
+    this.setState({ list })
+  }
+
+  updateActivestate = (isComplete, taskId) => {
+    const list = [...this.state.list]
+    list.forEach(item => {
+      if (item.id === taskId) item.isComplete = isComplete
     })
+
+    this.setState({ list })
+    console.log(this.state.list)
   }
 
   render () {
@@ -55,7 +64,8 @@ class Container extends React.Component {
           }} />
         <TaskList
           list={this.state.list}
-          onDelete={this.removeItem} />
+          onDelete={this.removeItem}
+          onChangeActiveState={this.updateActivestate} />
       </>
     )
   }

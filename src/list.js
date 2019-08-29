@@ -11,7 +11,8 @@ function TaskList (props) {
             title={item.title}
             key={item.id}
             id={item.id}
-            onDelete={props.onDelete} />
+            onDelete={props.onDelete}
+            onChangeActiveState={props.onChangeActiveState} />
         )
       })}
     </section>
