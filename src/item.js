@@ -9,6 +9,7 @@ let style = {
 function TaskItem (props) {
   const { id, title, isComplete, note } = props.task
   let ActiveState = isComplete ? 'revert' : 'complete'
+  console.log(title)
   return (
     <div style={style}>
       <p style={style}>
