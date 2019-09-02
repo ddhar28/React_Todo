@@ -1,5 +1,5 @@
 import React from 'react'
-import TaskItem from './item'
+import TaskItem from './Item'
 // import style from './styles.module.css'
 
 function TaskList (props) {
@@ -12,7 +12,8 @@ function TaskList (props) {
             task={item}
             onDelete={props.onDelete}
             onChangeActiveState={props.onChangeActiveState}
-            onUpdate={props.onUpdate} />
+            onUpdate={props.onUpdate}
+            updateItem={props.updateItem} />
         )
       })}
     </section>
