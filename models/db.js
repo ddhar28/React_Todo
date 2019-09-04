@@ -23,7 +23,6 @@ exports.addTask = async function (req, res) {
 }
 
 exports.updateTask = async function (req, res) {
-  console.log(req.body)
   let task = await Todo.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true })
   return task
 }

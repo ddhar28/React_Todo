@@ -1,5 +1,5 @@
 import React from 'react'
-// import style from './styles.module.css'
+import style from './styles.module.css'
 import TaskInput from './Input'
 import TaskList from './List'
 
@@ -105,7 +105,11 @@ class App extends React.Component {
   render () {
     return (
       <>
-        <header><h2>To-Do App</h2></header>
+      <header>
+        <h2 className={style.title}>To-Do App</h2>
+        <p>Think. Plan. Execute.</p>
+        </header>
+      <div className={style.container}>
         <TaskInput
           value={this.state.newItem}
           onChange={(e) => this.updateInput(e.target.value)}
@@ -119,6 +123,7 @@ class App extends React.Component {
           onChangeActiveState={(id, state) => this.updateActivestate(id, state)}
           onUpdate={this.updateTaskState}
           updateItem={(id) => this.updateItem(id)} />
+      </div>
       </>
     )
   }

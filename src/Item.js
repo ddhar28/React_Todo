@@ -2,13 +2,6 @@ import React from 'react'
 import onClickOutside from 'react-onclickoutside'
 // import style from './styles.module.css'
 
-let style = {
-  paddingBottom: '1px',
-  margin: '0',
-  backgroundColor: 'cadetblue',
-  width: '25%'
-}
-
 function TaskItem (props) {
   const { _id, title, isComplete, note } = props.task
   let ActiveState = isComplete === 'true' ? '\u21BA' : '\u2714'
@@ -16,7 +9,7 @@ function TaskItem (props) {
   TaskItem.handleClickOutside = () => props.updateItem(_id)
 
   return (
-    <div style={style}>
+    <div>
       <p>
         <textarea value={title} onChange={(e) => props.onUpdate(_id, 'title', e.target.value)} />
       </p>

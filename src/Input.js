@@ -1,10 +1,11 @@
 import React from 'react'
-// import style from './styles.module.css'
+import style from './styles.module.css'
 
 function TaskInput (props) {
   return (
-    <section>
+    <section className={`${style.sec} ${style.left}`}>
       <input
+        className={style.taskInput}
         type='text'
         maxLength='50'
         placeholder='Enter task title...'
@@ -12,7 +13,7 @@ function TaskInput (props) {
         onChange={props.onChange}
         onKeyDown={props.onEnter} />
 
-      <button onClick={props.onClick} >Add</button>
+      <button className={style.addBtn} onClick={props.onClick} >Add</button>
     </section>
   )
 }
