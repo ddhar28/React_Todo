@@ -79,7 +79,6 @@ class App extends React.Component {
       if (item._id === taskId) item.isComplete = val
     })
 
-    console.log(list)
     this.setState({ list })
   }
 
@@ -99,7 +98,7 @@ class App extends React.Component {
       method: 'POST',
       headers: header,
       body: JSON.stringify(editedTask)
-    })
+    })  
   }
 
   render () {

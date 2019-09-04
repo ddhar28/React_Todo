@@ -63,3 +63,37 @@ span {
 
 /* Tasklist */
 
+.listDisplay {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-flow: row wrap;
+}
+
+.listDisplay:not(:empty) {
+  overflow-y: scroll;
+}
+
+/* TaskItem */
+
+.taskItem {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.26);
+  padding: 0;
+  text-align: right;
+  margin: 5px;
+  max-width: 30%;
+  min-width: 30%;
+  background-color: rgba(255, 208, 0, 0.678);
+  transition: all 1s ease 1s;
+  display: inline-block;
+}
+
+textarea {
+  resize: none;
+  outline: none;
+  border: none;
+  margin: 0;
+  width: 100%;
+  }

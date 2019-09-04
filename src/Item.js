@@ -1,27 +1,37 @@
 import React from 'react'
 import onClickOutside from 'react-onclickoutside'
-// import style from './styles.module.css'
+import style from './styles.module.css'
 
-function TaskItem (props) {
-  const { _id, title, isComplete, note } = props.task
-  let ActiveState = isComplete === 'true' ? '\u21BA' : '\u2714'
+class TaskItem extends React.Component {
+  constructor (props) {
+    super(props)
+  }
+  
+  handleClickOutside = () => this.props.updateItem(this.props.task._id)
 
-  TaskItem.handleClickOutside = () => props.updateItem(_id)
+  render () {
+    const _id = this.props.task._id
+    const title = this.props.task.title
+    const isComplete = this.props.task.isComplete
+    const note = this.props.task.note
+    let ActiveState = isComplete === 'true' ? '\u21BA' : '\u2714'
 
-  return (
-    <div>
-      <p>
-        <textarea value={title} onChange={(e) => props.onUpdate(_id, 'title', e.target.value)} />
-      </p>
-      <textarea value={note} placeholder='Enter notes...' onChange={(e) => props.onUpdate(_id, 'note', e.target.value)} />
-      <button onClick={() => props.onChangeActiveState(_id, isComplete)} >{ActiveState}</button>
-      <button onClick={() => props.onDelete(_id)} >&#x2717;</button>
+    return (
+    <div className={style.taskItem}>
+      <textarea
+        className={style.taskName}
+        value={title}
+        onChange={(e) => this.props.onUpdate(_id, 'title', e.target.value)} />
+      <textarea
+        className={style.note}
+        value={note}
+        placeholder='Enter notes...'
+        onChange={(e) => this.props.onUpdate(_id, 'note', e.target.value)} />
+
+      <button onClick={() => this.props.onChangeActiveState(_id, isComplete)} >{ActiveState}</button>
+      <button onClick={() => this.props.onDelete(_id)} >&#x2717;</button>
     </div>
-  )
+  )}
 }
 
-const clickOutsideConfig = {
-  handleClickOutside: () => TaskItem.handleClickOutside
-}
-
-export default onClickOutside(TaskItem, clickOutsideConfig)
+export default onClickOutside(TaskItem)
