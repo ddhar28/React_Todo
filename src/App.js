@@ -93,6 +93,7 @@ class App extends React.Component {
 
   async updateItem (taskId) {
     const editedTask = this.state.list.find(item => item._id === taskId)
+    console.log(editedTask)
 
     await fetch('/edit', {
       method: 'POST',
