@@ -9,6 +9,9 @@ let todoSchema = new mongoose.Schema({
   },
   note: {
     type: String
+  },
+  due: {
+    type: Date
   }
 })
 

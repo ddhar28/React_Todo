@@ -10,20 +10,20 @@ class TaskList extends React.Component {
     }
   }
 
-  toggleDisplay = (isComplete) => {
+  toggleDisplay = (e, isComplete) => {
     const completed = isComplete
     this.setState({completed})
+    // e.target.parentNode.style.display = 'none'
   }
 
   listDisplay = () => {
     const completed = this.state.completed ? 'true' : 'false'
     const list = this.props.list.filter(item => item.isComplete === completed)
     return (
-      <section>
+      <section className={style.listDisplay}>
       {list.map(item => {
         return (
           <TaskItem
-            className={style.listDisplay}
             key={item._id}
             task={item}
             onDelete={this.props.onDelete}
@@ -39,11 +39,11 @@ class TaskList extends React.Component {
   render () {
     return (
       <section className={`${style.sec} ${style.right}`}>
-        <span className='dropdown'>
-          <button className='dropbtn'>&#8801;</button>
-          <div className='dropdown-content'>
-            <p onClick={() => this.toggleDisplay(false)}>To-Dos</p>
-            <p onClick={() => this.toggleDisplay(true)}>Completed</p>
+        <span className={style.dropdown}>
+          <button className={style.dropbtn}>&#8801;</button>
+          <div className={style.dropdownContent}>
+            <p onClick={(e) => this.toggleDisplay(e, false)}>To-Dos</p>
+            <p onClick={(e) => this.toggleDisplay(e, true)}>Completed</p>
           </div>
         </span>
         {this.listDisplay()}

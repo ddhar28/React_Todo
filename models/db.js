@@ -16,7 +16,8 @@ exports.addTask = async function (req, res) {
   let todo = new Todo({
     title: req.body.title,
     isComplete: false,
-    note: ''
+    note: '',
+    due: req.body.dueDate
   })
   todo = await todo.save()
   return todo

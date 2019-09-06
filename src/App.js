@@ -13,7 +13,6 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      newItem: '',
       list: []
     }
   }
@@ -27,28 +26,12 @@ class App extends React.Component {
     this.setState({ list })
   }
 
-  updateInput (val) {
-    this.setState({
-      newItem: val
-    })
-  }
-
-  async addItem () {
-    let newTask = this.state.newItem.trim()
-    if (newTask === '') return
-
-    const res = await fetch('/add', {
-      method: 'POST',
-      headers: header,
-      body: JSON.stringify({ title: newTask })
-    })
-    let newItem = await res.json()
+  async addItem (newItem) {
     const list = [...this.state.list]
     list.push(newItem)
 
     this.setState({
-      list,
-      newItem: ''
+      list
     })
   }
 
@@ -111,12 +94,8 @@ class App extends React.Component {
         </header>
       <div className={style.container}>
         <TaskInput
-          value={this.state.newItem}
-          onChange={(e) => this.updateInput(e.target.value)}
-          onClick={() => this.addItem()}
-          onEnter={(e) => {
-            if (e.keyCode === 13) this.addItem()
-          }} />
+          addItem={(val) => this.addItem(val)}
+           />
         <TaskList
           list={this.state.list}
           onDelete={(id) => this.removeItem(id)}

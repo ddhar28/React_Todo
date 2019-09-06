@@ -1,20 +1,9 @@
 import React from 'react'
-// import onClickOutside from 'react-onclickoutside'
 import style from './styles.module.css'
 
 class TaskItem extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
-  // handleClickOutside = () => this.props.updateItem(this.props.task._id)
-
   render () {
-    const { _id, title, isComplete, note } = this.props.task
-    // const _id = this.props.task._id
-    // const title = this.props.task.title
-    // const isComplete = this.props.task.isComplete
-    // const note = this.props.task.note
+    const { _id, title, isComplete, note, due } = this.props.task
     let ActiveState = isComplete === 'true' ? '\u21BA' : '\u2714'
 
     return (
@@ -31,12 +20,16 @@ class TaskItem extends React.Component {
           onChange={(e) => this.props.onUpdate(_id, 'note', e.target.value)}
           onBlur={() => this.props.updateItem(_id)} />
 
-        <button onClick={() => this.props.onChangeActiveState(_id, isComplete)} >{ActiveState}</button>
-        <button onClick={() => this.props.onDelete(_id)} >&#x2717;</button>
+        <span className={style.date}>Due: {due.slice(0, 10)}</span>
+        <button
+          className={style.taskBtn}
+          onClick={() => this.props.onChangeActiveState(_id, isComplete)} >{ActiveState}</button>
+        <button
+          className={style.taskBtn}
+          onClick={() => this.props.onDelete(_id)} >&#x2717;</button>
       </div>
     )
   }
 }
 
-// export default onClickOutside(TaskItem)
 export default TaskItem
